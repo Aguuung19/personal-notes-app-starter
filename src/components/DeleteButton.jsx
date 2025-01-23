@@ -1,0 +1,15 @@
+import React from "react";
+import PropTypes from "prop-types";
+import { FiDelete } from "react-icons/fi";
+
+
+function DeleteButton({ id, onDelete }) {
+    return <button className="note_item__delete-button" onClick={() => onDelete(id)}><FiDelete /></button>    
+}
+
+DeleteButton.propTypes = {
+    id: PropTypes.number.isRequired,
+    onDelete: PropTypes.func.isRequired,
+}
+
+export default DeleteButton;
