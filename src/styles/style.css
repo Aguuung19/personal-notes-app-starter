@@ -139,6 +139,18 @@ main {
   right: 32px;
 }
 
+.note-item__action {
+  display: flex;
+  margin-top: 12px;
+  gap: 4px;
+  justify-self: end;
+}
+
+button {
+  border: none;
+  font-size: 24px;
+}
+
 .action {
   display: flex;
   align-items: center;

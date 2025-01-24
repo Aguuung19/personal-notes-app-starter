@@ -6,13 +6,26 @@ import ArchiveButton from "./ArchiveButton";
 
 function NoteItem({ title, body, createdAt, id, onDelete, archived, onArchive }) {
     return (
-        <div className="note-item">
-            <NoteItemBody title={title} body={body} createdAt={createdAt} />
-            <div className="note-item__action">
-                <DeleteButton id={id} onDelete={onDelete} />
-                <ArchiveButton id={id} archived={archived} onArchive={onArchive} />
-            </div>
+      <section className="note-item">
+        <NoteItemBody title={title} body={body} createdAt={createdAt} />
+        <div className="note-item__action">
+          <div className="action">
+            <DeleteButton
+              className=""
+              id={id}
+              onDelete={onDelete}
+            />
+          </div>
+          <div className="action">
+            <ArchiveButton
+              className=""
+              id={id}
+              archived={archived}
+              onArchive={onArchive}
+            />
+          </div>
         </div>
+      </section>
     );
 }
 
@@ -20,7 +33,7 @@ NoteItem.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     body: PropTypes.string.isRequired,
-    createdAt: PropTypes.number.isRequired,
+    createdAt: PropTypes.string.isRequired,
     onDelete: PropTypes.func.isRequired,
     archived: PropTypes.bool.isRequired,
     onArchive: PropTypes.func.isRequired,

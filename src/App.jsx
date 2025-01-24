@@ -1,5 +1,7 @@
 import React from "react";
+import Navigation from "./components/Navigation";
 import HomePage from "./pages/HomePage";
+import ArchivePage from "./pages/ArchivePage";
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -10,10 +12,10 @@ function App() {
           <Navigation />
         </header>
         <main>
-            <Routes>
-                  <Route path="/" element={<HomePage />} />  
-            </Routes>
-          
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/archieved" element={<ArchivePage />} />
+          </Routes>
         </main>
       </div>
     );

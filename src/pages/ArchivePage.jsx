@@ -1,15 +1,15 @@
-import React from 'react';
-import NoteItemList from '../components/NoteItemList';
-import { getAllNotes } from '../utils/local-data';
+import React from "react";
+import NoteItemList from "../components/NoteItemList";
+import { getAllNotes } from "../utils/local-data";
 
-class HomePage extends React.Component {
+class ArchivePage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      notes: getAllNotes()
+      notes: getAllNotes(),
     };
-    
+
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
     this.onArchiveHandler = this.onArchiveHandler.bind(this);
   }
@@ -27,25 +27,25 @@ class HomePage extends React.Component {
   }
 
   render() {
-    const  activeNotes  = this.state.notes.filter((note) => !note.archived);
+      const archiveNotes = this.state.notes.filter((note) => note.archived);
+      console.log(archiveNotes);
     return (
-      <section className='homepage'>
+      <section className="homepage">
         <h2>Catatan Aktif</h2>
-        {activeNotes.length > 0 ? (
+        {archiveNotes.length > 0 ? (
           <NoteItemList
-            notes={activeNotes}
+            notes={archiveNotes}
             onArchive={this.onArchiveHandler}
             onDelete={this.onDeleteHandler}
           />
         ) : (
-            <div className="note-list-empty">
-              <p>Belum Ada Catatan</p>
+          <div className="note-list-empty">
+            <p>Belum Ada Catatan yang di Arsipkan</p>
           </div>
         )}
       </section>
-        
     );
   }
 }
 
-export default HomePage;
+export default ArchivePage;

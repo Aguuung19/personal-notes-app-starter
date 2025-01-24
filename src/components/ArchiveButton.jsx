@@ -6,7 +6,7 @@ import { MdOutlineRestorePage } from "react-icons/md";
 function ArchiveButton({ id, archived, onArchive }) {
     return (
         <button className="note-item__archive-button" onClick={() => onArchive(id)}>
-            {archived ? <MdOutlineRestorePage /> : <FiArchive />}
+            {archived ? <MdOutlineRestorePage />  : <FiArchive />}
         </button>
     )
 }

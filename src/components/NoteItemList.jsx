@@ -4,7 +4,7 @@ import NoteItem from "./NoteItem";
 
 function NoteItemList({ notes, onDelete, onArchive }) {
     return (
-        <div className="note-list">
+        <div className="notes-list">
             {notes.map((note) => (
                 <NoteItem
                     key={note.id}
@@ -22,7 +22,7 @@ function NoteItemList({ notes, onDelete, onArchive }) {
 }
 
 NoteItemList.propTypes = {
-    notes: PropTypes.object.isRequired,
+    notes: PropTypes.array.isRequired,
     onDelete: PropTypes.func.isRequired,
     onArchive: PropTypes.func.isRequired,
 }

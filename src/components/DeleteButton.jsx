@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FiDelete } from "react-icons/fi";
+import { MdOutlineDelete } from "react-icons/md";
 
 
 function DeleteButton({ id, onDelete }) {
-    return <button className="note_item__delete-button" onClick={() => onDelete(id)}><FiDelete /></button>    
+    return <button className="note_item__delete-button" onClick={() => onDelete(id)}><MdOutlineDelete /></button>    
 }
 
 DeleteButton.propTypes = {
