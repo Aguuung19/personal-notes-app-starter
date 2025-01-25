@@ -4,6 +4,7 @@ import SearchBar from "./components/SearchBar";
 import HomePage from "./pages/HomePage";
 import ArchivePage from "./pages/ArchivePage";
 import AddNotePage from "./pages/AddNotePage";
+import InvalidURl from "./pages/404";
 import { Routes, Route, useSearchParams } from 'react-router-dom';
 import { getAllNotes } from "./utils/local-data";
 
@@ -103,9 +104,9 @@ class App extends React.Component {
               path="/"
               element={
                 <HomePage
-                  notes={activeNotes} // Kirim catatan aktif ke HomePage
-                  onDelete={this.onDeleteHandler} // Kirim fungsi hapus
-                  onArchive={this.onArchiveHandler} // Kirim fungsi arsip
+                  notes={activeNotes} 
+                  onDelete={this.onDeleteHandler} 
+                  onArchive={this.onArchiveHandler} 
                 />
               }
             />
@@ -113,9 +114,9 @@ class App extends React.Component {
               path="/archieved"
               element={
                 <ArchivePage
-                  notes={archivedNotes} // Kirim catatan arsip ke ArchivePage
-                  onDelete={this.onDeleteHandler} // Kirim fungsi hapus
-                  onArchive={this.onArchiveHandler} // Kirim fungsi batal arsip
+                  notes={archivedNotes} 
+                  onDelete={this.onDeleteHandler} 
+                  onArchive={this.onArchiveHandler} 
                 />
               }
             />
@@ -123,6 +124,7 @@ class App extends React.Component {
               path="/addNote"
               element={<AddNotePage onAddNote={this.onAddNoteHandler} />}
             />
+            <Route path="*" element={<InvalidURl />} />
           </Routes>
         </main>
       </div>

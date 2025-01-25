@@ -6,7 +6,7 @@ function SearchBar({ keyword, keywordChange }) {
       <div className="search-bar">
         <input
           type="text"
-          placeholder="Cari berdasarkan nama"
+          placeholder="Cari berdasarkan judul catatan"
           value={keyword}
           onChange={(event) => keywordChange(event.target.value)}
         />
