@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Navigation from "./components/Navigation";
 import SearchBar from "./components/SearchBar";
 import HomePage from "./pages/HomePage";
@@ -113,7 +114,7 @@ class App extends React.Component {
             />
             <Route
               path="/notes/:id"
-              element={<DetailPageWrapper />}
+              element={<DetailPageWrapper notes={ this.state.notes} />}
             />
             <Route
               path="/archieved"
@@ -136,5 +137,10 @@ class App extends React.Component {
     );
   }
 }
+
+App.propTypes = {
+  defaultKeyword: PropTypes.string, 
+  keywordChange: PropTypes.func.isRequired,
+};
 
 export default AppWrapper;

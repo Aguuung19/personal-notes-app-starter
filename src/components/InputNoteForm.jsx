@@ -59,9 +59,4 @@ class InputNoteForm extends React.Component {
   }
 }
 
-InputNoteForm.propTypes = {
-  title: PropTypes.string,
-  body: PropTypes.string,
-};
-
 export default InputNoteForm;

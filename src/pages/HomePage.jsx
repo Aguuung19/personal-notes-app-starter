@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import NoteItemList from '../components/NoteItemList';
 
 function HomePage({ notes, onArchive, onDelete, keyword }) {
@@ -19,5 +20,11 @@ function HomePage({ notes, onArchive, onDelete, keyword }) {
     </section>
   );
 }
+
+HomePage.propTypes = {
+  notes: PropTypes.array.isRequired,
+  onArchive: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+};
 
 export default HomePage;
