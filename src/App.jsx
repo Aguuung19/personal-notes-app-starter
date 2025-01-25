@@ -1,5 +1,6 @@
 import React from "react";
 import Navigation from "./components/Navigation";
+import SearchBar from "./components/SearchBar";
 import HomePage from "./pages/HomePage";
 import ArchivePage from "./pages/ArchivePage";
 import AddNotePage from "./pages/AddNotePage";
@@ -13,11 +14,21 @@ class App extends React.Component {
 
     this.state = {
       notes: getAllNotes(),
+      keyword: '',
     };
 
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
     this.onArchiveHandler = this.onArchiveHandler.bind(this);
     this.onAddNoteHandler = this.onAddNoteHandler.bind(this);
+    this.onKeywordChangeHandler = this.onKeywordChangeHandler.bind(this);
+  }
+
+  onKeywordChangeHandler(keyword) {
+    this.setState(() => {
+      return {
+        keyword,
+      }
+    });
   }
 
   onDeleteHandler(id) {
@@ -47,8 +58,19 @@ class App extends React.Component {
   }
 
   render() {
-    const activeNotes = this.state.notes.filter((note) => !note.archived);
-    const archivedNotes = this.state.notes.filter((note) => note.archived);
+    const { notes, keyword } = this.state;
+
+    const activeNotes = notes.filter(
+      (note) =>
+        !note.archived &&
+        (note.title.toLowerCase().includes(keyword.toLowerCase()))
+    );
+
+    const archivedNotes = notes.filter(
+      (note) =>
+        note.archived &&
+        (note.title.toLowerCase().includes(keyword.toLowerCase()))
+    );
 
     return (
       <div className="app-container">
@@ -57,6 +79,11 @@ class App extends React.Component {
           <Navigation />
         </header>
         <main>
+          <SearchBar
+            keyword={this.state.keyword}
+            keywordChange={this.onKeywordChangeHandler}
+          />
+
           <Routes>
             <Route
               path="/"

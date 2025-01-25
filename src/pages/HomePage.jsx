@@ -1,7 +1,7 @@
 import React from 'react';
 import NoteItemList from '../components/NoteItemList';
 
-function HomePage({ notes, onArchive, onDelete }) {
+function HomePage({ notes, onArchive, onDelete, keyword }) {
   return (
     <section className="homepage">
       <h2>Catatan Aktif</h2>
