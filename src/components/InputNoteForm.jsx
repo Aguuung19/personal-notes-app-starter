@@ -11,7 +11,7 @@ class InputNoteForm extends React.Component {
     };
 
     this.onTitleChangeHandler = this.onTitleChangeHandler.bind(this);
-    this.onBodyChangeHandler = this.onBodyChangeHandler.bind(this);
+    this.onBodyInputHandler = this.onBodyInputHandler.bind(this);
     this.onSubmitHandler = this.onSubmitHandler.bind(this);
   }
 
@@ -19,8 +19,8 @@ class InputNoteForm extends React.Component {
     this.setState({ title: event.target.value });
   }
 
-  onBodyChangeHandler(event) {
-    this.setState({ body: event.target.value });
+  onBodyInputHandler(event) {
+    this.setState({ body: event.target.innerHTML });
   }
 
   onSubmitHandler(event) {
@@ -44,14 +44,15 @@ class InputNoteForm extends React.Component {
             onChange={this.onTitleChangeHandler}
             required
           />
-          <textarea
+          <div
             className="add-new-page__input__body"
-            placeholder="Isi Catatan"
-            value={this.state.body}
-            onChange={this.onBodyChangeHandler}
-            required
-          />
-          <button className="add-new-page__action" type="submit">Tambah</button>
+            data-placeholder="Isi Catatan"
+            contentEditable
+            onInput={this.onBodyInputHandler}
+          ></div>
+          <button className="add-new-page__action" type="submit">
+            Tambah
+          </button>
         </form>
       </section>
     );

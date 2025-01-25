@@ -4,6 +4,7 @@ import SearchBar from "./components/SearchBar";
 import HomePage from "./pages/HomePage";
 import ArchivePage from "./pages/ArchivePage";
 import AddNotePage from "./pages/AddNotePage";
+import DetailPageWrapper from "./pages/DetailPage";
 import InvalidURl from "./pages/404";
 import { Routes, Route, useSearchParams } from 'react-router-dom';
 import { getAllNotes } from "./utils/local-data";
@@ -109,6 +110,10 @@ class App extends React.Component {
                   onArchive={this.onArchiveHandler} 
                 />
               }
+            />
+            <Route
+              path="/notes/:id"
+              element={<DetailPageWrapper />}
             />
             <Route
               path="/archieved"

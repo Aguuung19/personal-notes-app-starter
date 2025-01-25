@@ -7,7 +7,7 @@ import ArchiveButton from "./ArchiveButton";
 function NoteItem({ title, body, createdAt, id, onDelete, archived, onArchive }) {
     return (
       <section className="note-item">
-        <NoteItemBody title={title} body={body} createdAt={createdAt} />
+        <NoteItemBody id={id} title={title} body={body} createdAt={createdAt} />
         <div className="note-item__action">
           <div className="action">
             <DeleteButton
