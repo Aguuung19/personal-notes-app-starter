@@ -139,8 +139,13 @@ class App extends React.Component {
 }
 
 App.propTypes = {
-  defaultKeyword: PropTypes.string, 
+  defaultKeyword: PropTypes.string,
   keywordChange: PropTypes.func.isRequired,
+  notes: PropTypes.array.isRequired,
+  archivedNotes: PropTypes.array.isRequired,
+  onDeleteHandler: PropTypes.func.isRequired,
+  onArchiveHandler: PropTypes.func.isRequired,
+  onAddNoteHandler: PropTypes.func.isRequired,
 };
 
 export default AppWrapper;
