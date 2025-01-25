@@ -4,9 +4,21 @@ import SearchBar from "./components/SearchBar";
 import HomePage from "./pages/HomePage";
 import ArchivePage from "./pages/ArchivePage";
 import AddNotePage from "./pages/AddNotePage";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, useSearchParams } from 'react-router-dom';
 import { getAllNotes } from "./utils/local-data";
 
+
+function AppWrapper() {
+  const [searchParams, setSearchParam] = useSearchParams();
+  
+  const keyword = searchParams.get('keyword');
+
+  function changeSearchParams(keyword) {
+    setSearchParam({ keyword });
+  }
+
+  return <App defaultKeyword={keyword} keywordChange={changeSearchParams} />
+}
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +26,7 @@ class App extends React.Component {
 
     this.state = {
       notes: getAllNotes(),
-      keyword: '',
+      keyword: props.defaultKeyword || '',
     };
 
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
@@ -29,6 +41,8 @@ class App extends React.Component {
         keyword,
       }
     });
+
+    this.props.keywordChange(keyword);
   }
 
   onDeleteHandler(id) {
@@ -116,4 +130,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default AppWrapper;
